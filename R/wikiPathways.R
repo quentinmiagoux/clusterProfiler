@@ -62,7 +62,7 @@ prepare_WP_data <- function(organism) {
 }
 
 get_wp_gmtfile <- function() {
-    wpurl <- 'https://data.wikipathways.org/current/gmt/'
+    wpurl <- 'https://data.wikipathways.org/20230210/gmt/'
     x <- readLines(wpurl)
     y <- x[grep('\\.gmt',x)]
     sub(".*(wikipathways-.*\\.gmt).*", "\\1",  y[grep('File', y)])
@@ -87,7 +87,7 @@ get_wp_organisms <- function() {
 get_wp_data <- function(organism, output = "data.frame") {
     organism <- sub(" ", "_", organism)
     gmtfile <- get_wp_gmtfile()
-    wpurl <- 'https://data.wikipathways.org/current/gmt/'
+    wpurl <- 'https://data.wikipathways.org/20230210/gmt/'
     url <- paste0(wpurl,
                   gmtfile[grep(organism, gmtfile)])
     f <- tempfile(fileext = ".gmt")
